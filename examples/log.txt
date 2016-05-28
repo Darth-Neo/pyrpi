@@ -1,0 +1,5 @@
+2015-11-15 08:47:43,970 [INFO ] [datetime_exanple.py:18 ] 08:47
+2015-11-15 08:47:52,572 [INFO ] [datetime_exanple.py:22 ] Nov 15  08:47 AM
+2015-11-15 08:50:35,784 [INFO ] [datetime_exanple.py:18 ] 08:50
+2015-11-15 08:50:38,118 [INFO ] [datetime_exanple.py:22 ] Nov 15  08:50 AM
+2015-11-15 08:51:11,233 [INFO ] [datetime_exanple.py:26 ] time.struct_time(tm_year=1900, tm_mon=11, tm_mday=15, tm_hour=8, tm_min=50, tm_sec=0, tm_wday=3, tm_yday=319, tm_isdst=-1)

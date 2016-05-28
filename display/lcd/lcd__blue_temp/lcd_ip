@@ -1,0 +1,41 @@
+#!/bin/sh
+
+### BEGIN INIT INFO
+# Provides: LCD - date / time / ip address
+# Required-Start: $remote_fs $syslog
+# Required-Stop: $remote_fs $syslog
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: Liquid Crystal Display
+# Description: date / time / ip address
+### END INIT INFO
+
+export HOME
+
+export LCD_IP=/root/bin/lcd/lcd_ip.py
+export LOG_LCD_IP=/root/bin/lcd/lcd_ip.log
+
+case "$1" in
+    restart)
+        echo "Restarting LCD"
+        LCD_PID=`ps auxwww | grep $LCD_IP | head -1 | awk '{print $2}'`
+        kill -9 $LCD_PID
+        nohup $LCD_IP >> $LOG_LCD_IP 2>&1 &
+    ;;
+    start)
+        echo "Starting LCD"
+        nohup $LCD_IP >> $LOG_LCD_IP 2>&1 &
+
+    ;;
+    stop)
+        echo "Stopping LCD"
+	LCD_PID=`ps auxwww | grep $LCD_IP | head -1 | awk '{print $2}'`
+	kill -9 $LCD_PID
+
+    ;;
+    *)
+        echo "Usage: /etc/init.d/lcd {start|stop|restart}"
+        exit 1
+    ;;
+esac
+exit 0
